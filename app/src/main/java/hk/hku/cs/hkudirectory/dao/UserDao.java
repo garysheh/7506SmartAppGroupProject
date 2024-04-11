@@ -14,6 +14,7 @@ public class UserDao {
     private static final String TAG = "mysql-hkudirectory-UserDao";
 
     // function: login
+    // reference: https://blog.csdn.net/changyana/article/details/122950467
     public int login(String userEmail, String userPassword) {
 
         // store queries content
@@ -50,10 +51,10 @@ public class UserDao {
                         for (String key:map.keySet()) {
                             if (key.equals("userPassword")) {
                                 if(userPassword.equals(map.get(key))) {
-                                    msg = 1;
+                                    msg = 1; // correct password
                                 }
                                 else
-                                    msg = 2;
+                                    msg = 2; // incorrect
                                 break;
                             }
                         }
@@ -75,7 +76,7 @@ public class UserDao {
         return msg;
     }
 
-    // function: Registration
+    // function: Registration(Deprecated)
 
     public boolean register(User user) {
         HashMap<String, Object> map = new HashMap<>();
@@ -86,6 +87,7 @@ public class UserDao {
             if (connection != null) {
                 PreparedStatement ps = connection.prepareStatement(sql);
                 if (ps != null) {
+                    // insert data into database
                     ps.setString(1, user.getUserEmail());
                     ps.setString(2, user.getUserPassword());
                     ps.setString(3, user.getUserName());

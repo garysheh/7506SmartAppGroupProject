@@ -31,20 +31,6 @@ public class MainActivity extends AppCompatActivity {
     EditText txt_UserEmail, txt_UserPW;
     Button btn_Login;
 
-    /*
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.login_button) {
-            String uemail = txt_UserEmail.getText().toString();
-            String upassword = txt_UserPW.getText().toString();
-
-            // Redirect to the Home page
-            Intent intent = new Intent(getBaseContext(), HomePageActivity.class);
-            startActivity(intent);
-        }
-    }
-    */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
