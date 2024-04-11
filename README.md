@@ -1,4 +1,4 @@
-# 7506SmartAppGroupProject
+# COMP7506 Smart Phone Apps Development Group Project
 ## Project name: HKU Directory
 ## MySQL Database Related
 ### Credentials
@@ -45,7 +45,7 @@ public static Connection getConn() {
     }
 ```
 ## Frontend Related
-### Login UI
+### Login/Register UI
 ### Main Page
 ### Contact Info Page
 ### Map Direction Page
