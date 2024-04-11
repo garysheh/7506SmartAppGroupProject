@@ -1,4 +1,5 @@
 # 7506SmartAppGroupProject
+## Project name: HKU Directory
 ## MySQL Database Related
 ### Credentials
 
@@ -28,3 +29,23 @@ Use ```result.get(index)``` to find certain row, and use ```result.get(index).ge
 
 ![](./images/Untitled%202.jpg)
 ![](./images/Untitled%203.jpg)
+### Refactored MySQL Database connection
+#### Usage(JDBCUtils.java):
+```
+public static Connection getConn() {
+        Connection connection = null;
+        try {
+            Class.forName(driver); // load class dynamically
+            String url = "...."; // try to connect database with URL
+            connection = DriverManager.getConnection(url, user, password);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
+```
+## Frontend Related
+### Login UI
+### Main Page
+### Contact Info Page
+### Map Direction Page
