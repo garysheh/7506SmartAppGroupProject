@@ -9,6 +9,9 @@
     <string name="Register">Register</string>
     <string name="password">Password</string>
     <string name="log_in">LOG IN</string>
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="location">Location</string>
     <string name="faq">FAQ</string>
     <string name="create_user_id">CREATE USER ID</string>
     <string name="security_tips">SECURITY TIPS</string>

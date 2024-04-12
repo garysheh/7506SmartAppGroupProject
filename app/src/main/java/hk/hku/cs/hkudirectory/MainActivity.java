@@ -37,16 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-
-
-        /*
-        btn_Login = (Button)findViewById(R.id.login_button);
-        txt_UserEmail = (EditText)findViewById(R.id.email_input);
-        txt_UserPW = (EditText)findViewById(R.id.password_input);
-
-
-        btn_Login.setOnClickListener(this);
-        */
         //tentative change for developing the homepage
 
         /* uncomment when need to check variables from database
@@ -56,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         tEmail = (TextView) this.findViewById(R.id.email);
         tLinkedin = (TextView) this.findViewById(R.id.linkedin);
         tLocation = (TextView) this.findViewById(R.id.location);
-         */
+        */
 
 
         // connectSQL sql = new connectSQL();

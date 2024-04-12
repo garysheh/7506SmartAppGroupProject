@@ -35,7 +35,6 @@
         </activity>
 
         <activity
-            android:name=".HomePageActivity"
             android:name=".ProfileActivity"
             android:theme="@style/AppTheme"
             android:exported="false"/>
