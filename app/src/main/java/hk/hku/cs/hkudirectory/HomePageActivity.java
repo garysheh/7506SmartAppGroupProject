@@ -16,6 +16,7 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button mapListPage = null; // the button for maplist
+        Button contactPage = null; // the button for contact page
         super.onCreate(savedInstanceState);
 //        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
@@ -24,11 +25,21 @@ public class HomePageActivity extends AppCompatActivity {
 //        v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
 //        return insets
         mapListPage = (Button) findViewById(R.id.map_button);
+        contactPage = (Button) findViewById(R.id.contact_button);
         mapListPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(HomePageActivity.this, MaplistActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        contactPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(HomePageActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
