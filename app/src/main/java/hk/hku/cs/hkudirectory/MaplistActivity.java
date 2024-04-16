@@ -2,8 +2,11 @@ package hk.hku.cs.hkudirectory;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,8 @@ public class MaplistActivity extends AppCompatActivity {
     TextView  tID, tName, tLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button testMapRedirect = null;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maplist);
         tID = findViewById(R.id.id1);
@@ -28,6 +33,16 @@ public class MaplistActivity extends AppCompatActivity {
 
         connectSQL sql = new connectSQL();
         sql.execute("SELECT * FROM people");
+
+        testMapRedirect = (Button) findViewById(R.id.location1);
+        testMapRedirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MaplistActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public class connectSQL extends AsyncTask<String, Void, List<Map<String, String>>> {
         private static final String url = "jdbc:mysql://nuc.hkumars.potatoma.com:3306/comp7506?useSSL=false&allowPublicKeyRetrieval=true";
