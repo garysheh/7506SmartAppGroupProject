@@ -78,4 +78,7 @@ public class register extends AppCompatActivity {
             }
         }
     };
+
+    public static class ContactAdapter {
+    }
 }

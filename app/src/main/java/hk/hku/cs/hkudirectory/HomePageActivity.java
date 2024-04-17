@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class HomePageActivity extends AppCompatActivity {
 
     @Override
@@ -38,8 +40,16 @@ public class HomePageActivity extends AppCompatActivity {
         contactPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(HomePageActivity.this, ProfileActivity.class);
+
+                Intent intent = new Intent(getBaseContext(), ContactListActivity.class);
+//                ArrayList<String> contact_name = new ArrayList<String>();
+//
+//                contact_name.add("Eason Chan");
+//                contact_name.add("Judy");
+//                contact_name.add("Ken");
+//                contact_name.add("Mary");
+//
+//                intent.putStringArrayListExtra("contact_name", contact_name);
                 startActivity(intent);
             }
         });

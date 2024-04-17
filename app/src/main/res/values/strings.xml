@@ -21,4 +21,6 @@
     <string name="calendar">Calendar</string>
     <string name="information">Information</string>
     <string name="setting">Setting</string>
+    <string name="contact_name">Name</string>
+    <string name="contact_email">Email</string>
 </resources>
