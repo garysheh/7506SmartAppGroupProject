@@ -20,16 +20,21 @@ import java.util.List;
 import java.util.Map;
 
 public class MaplistActivity extends AppCompatActivity {
-    TextView  tID, tName, tLocation;
+    TextView  tType, tName, tLocation;
+    TextView  tType2, tName2, tLocation2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button testMapRedirect = null;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maplist);
-        tID = findViewById(R.id.id1);
+        tType = findViewById(R.id.type1);
         tName = findViewById(R.id.name1);
         tLocation = findViewById(R.id.location1);
+
+        tType2 = findViewById(R.id.type2);
+        tName2 = findViewById(R.id.name2);
+        tLocation2 = findViewById(R.id.location2);
 
         connectSQL sql = new connectSQL();
         sql.execute("SELECT * FROM people");
@@ -70,7 +75,7 @@ public class MaplistActivity extends AppCompatActivity {
                 queryResult.clear();
                 while (rs.next()) {
                     queryResult.add(new HashMap<String, String>());
-                    queryResult.get(i).put("ID", rs.getString(1));
+                    queryResult.get(i).put("type", rs.getString(3));
                     queryResult.get(i).put("name", rs.getString(2));
                     queryResult.get(i).put("location", rs.getString(6));
                     i++;
@@ -86,13 +91,21 @@ public class MaplistActivity extends AppCompatActivity {
             //param: result contains records returned from database
             try {
 
-                String ID = result.get(1).get("ID");
-                String name = result.get(1).get("name");
-                String location = result.get(1).get("location");
+                String type = result.get(0).get("type");
+                String name = result.get(0).get("name");
+                String location = result.get(0).get("location");
 
-                tID.setText(ID);
+                String type2 = result.get(1).get("type");
+                String name2 = result.get(1).get("name");
+                String location2 = result.get(1).get("location");
+
+                tType.setText(type);
                 tName.setText(name);
                 tLocation.setText(location);
+
+                tType2.setText(type2);
+                tName2.setText(name2);
+                tLocation2.setText(location2);
             } catch (Exception e) {
                 e.printStackTrace();
             }
