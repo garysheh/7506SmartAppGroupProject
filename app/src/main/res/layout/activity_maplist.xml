@@ -70,7 +70,7 @@
         android:padding="1dp"
         android:textAlignment="center"
         android:id="@+id/location1"
-      />
+        />
   </TableRow>
   <TableRow android:background="@drawable/table_background" android:padding="10dp">
     <TextView

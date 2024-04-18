@@ -25,6 +25,7 @@ public class MaplistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button testMapRedirect = null;
+        Button testMapRedirect2 = null;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maplist);
@@ -40,7 +41,17 @@ public class MaplistActivity extends AppCompatActivity {
         sql.execute("SELECT * FROM people");
 
         testMapRedirect = (Button) findViewById(R.id.location1);
+        testMapRedirect2 = (Button) findViewById(R.id.location2);
         testMapRedirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MaplistActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        testMapRedirect2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -88,24 +99,22 @@ public class MaplistActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Map<String, String>> result) {
-            //param: result contains records returned from database
             try {
+                for (int i = 0; i < result.size(); i++) {
+                    String type = result.get(i).get("type");
+                    String name = result.get(i).get("name");
+                    String location = result.get(i).get("location");
 
-                String type = result.get(0).get("type");
-                String name = result.get(0).get("name");
-                String location = result.get(0).get("location");
-
-                String type2 = result.get(1).get("type");
-                String name2 = result.get(1).get("name");
-                String location2 = result.get(1).get("location");
-
-                tType.setText(type);
-                tName.setText(name);
-                tLocation.setText(location);
-
-                tType2.setText(type2);
-                tName2.setText(name2);
-                tLocation2.setText(location2);
+                    if (i == 0) {
+                        tType.setText(type);
+                        tName.setText(name);
+                        tLocation.setText(location);
+                    } else if (i == 1) {
+                        tType2.setText(type);
+                        tName2.setText(name);
+                        tLocation2.setText(location);
+                    }
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

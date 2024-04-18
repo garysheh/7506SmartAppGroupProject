@@ -27,8 +27,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        LatLng location = new LatLng(22.28320, 114.13999);
-        googleMap.addMarker(new MarkerOptions().position(location).title("CYCP4"));
+        LatLng location = new LatLng(22.28305, 114.13587);
+        googleMap.addMarker(new MarkerOptions().position(location).title("Composite Building"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,18));
     }
 }
