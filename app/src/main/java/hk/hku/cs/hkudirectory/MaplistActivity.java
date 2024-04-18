@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,10 +24,14 @@ import java.util.Map;
 public class MaplistActivity extends AppCompatActivity {
     TextView  tType, tName, tLocation;
     TextView  tType2, tName2, tLocation2;
+
+    TextView  tType3, tName3, tLocation3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button testMapRedirect = null;
         Button testMapRedirect2 = null;
+        Button testMapRedirect3 = null;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maplist);
@@ -37,11 +43,17 @@ public class MaplistActivity extends AppCompatActivity {
         tName2 = findViewById(R.id.name2);
         tLocation2 = findViewById(R.id.location2);
 
+        tType3 = findViewById(R.id.type3);
+        tName3 = findViewById(R.id.name3);
+        tLocation3 = findViewById(R.id.location3);
+
         connectSQL sql = new connectSQL();
-        sql.execute("SELECT * FROM people");
+        sql.execute("SELECT * FROM class");
 
         testMapRedirect = (Button) findViewById(R.id.location1);
         testMapRedirect2 = (Button) findViewById(R.id.location2);
+        testMapRedirect3 = (Button) findViewById(R.id.location3);
+        LatLng coordinates;
         testMapRedirect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +71,18 @@ public class MaplistActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        testMapRedirect3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MaplistActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
     public class connectSQL extends AsyncTask<String, Void, List<Map<String, String>>> {
         private static final String url = "jdbc:mysql://nuc.hkumars.potatoma.com:3306/comp7506?useSSL=false&allowPublicKeyRetrieval=true";
         private static final String user = "potatoma";
@@ -86,9 +109,9 @@ public class MaplistActivity extends AppCompatActivity {
                 queryResult.clear();
                 while (rs.next()) {
                     queryResult.add(new HashMap<String, String>());
-                    queryResult.get(i).put("type", rs.getString(3));
-                    queryResult.get(i).put("name", rs.getString(2));
-                    queryResult.get(i).put("location", rs.getString(6));
+                    queryResult.get(i).put("id", rs.getString(1));
+                    queryResult.get(i).put("Room", rs.getString(3));
+                    queryResult.get(i).put("Instructor", rs.getString(2));
                     i++;
                 }
             } catch (Exception e) {
@@ -101,9 +124,9 @@ public class MaplistActivity extends AppCompatActivity {
         protected void onPostExecute(List<Map<String, String>> result) {
             try {
                 for (int i = 0; i < result.size(); i++) {
-                    String type = result.get(i).get("type");
-                    String name = result.get(i).get("name");
-                    String location = result.get(i).get("location");
+                    String type = result.get(i).get("id");
+                    String name = result.get(i).get("Room");
+                    String location = result.get(i).get("Instructor");
 
                     if (i == 0) {
                         tType.setText(type);
@@ -113,6 +136,10 @@ public class MaplistActivity extends AppCompatActivity {
                         tType2.setText(type);
                         tName2.setText(name);
                         tLocation2.setText(location);
+                    } else if (i == 2) {
+                        tType3.setText(type);
+                        tName3.setText(name);
+                        tLocation3.setText(location);
                     }
                 }
             } catch (Exception e) {
