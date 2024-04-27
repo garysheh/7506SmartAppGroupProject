@@ -33,8 +33,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
+
         LatLng location = new LatLng(22.2833, 114.1399);
-        googleMap.addMarker(new MarkerOptions().position(location).title("Chong Yuet Ming Physics Building"));
+        googleMap.addMarker(new MarkerOptions().position(location).title("Selected Location"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,18));
+
     }
 }

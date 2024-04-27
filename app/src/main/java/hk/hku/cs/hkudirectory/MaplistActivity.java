@@ -47,7 +47,7 @@ public class MaplistActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        int clickedPosition = position - 1;
+        int clickedPosition = position;
         if (clickedPosition >= 0 && clickedPosition < mapData.size()) {
             String clickedRoom = mapData.get(clickedPosition).getMclass();
             Toast.makeText(mapContext, "Clicked class: " + clickedRoom, Toast.LENGTH_SHORT).show();
