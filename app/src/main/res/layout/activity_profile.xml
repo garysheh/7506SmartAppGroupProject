@@ -44,7 +44,7 @@
             android:id="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Eason Chan"
+            android:text="TESTING NAME"
             android:gravity="center"
             android:textSize="40sp"/>
     </LinearLayout>
@@ -76,7 +76,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:text="PhD"
+            android:text="TESTING ?"
             android:textColor="@color/primaryColor"
             android:textSize="20sp" />
     </LinearLayout>
@@ -110,7 +110,7 @@
             android:layout_marginBottom="10dp"
             android:textSize="20sp"
             android:textColor="@color/primaryColor"
-            android:text="easonchanemail@gamil.com" />
+            android:text="testingandtesting@gamil.com" />
     </LinearLayout>
 
 
@@ -143,7 +143,7 @@
             android:layout_marginBottom="10dp"
             android:textSize="20sp"
             android:textColor="@color/primaryColor"
-            android:text="https://linkedin.com/easonchan" />
+            android:text="testinglinkedin" />
     </LinearLayout>
 
     <LinearLayout
@@ -175,7 +175,7 @@
             android:layout_marginBottom="10dp"
             android:textSize="20sp"
             android:textColor="@color/primaryColor"
-            android:text="CYP04" />
+            android:text="testing" />
     </LinearLayout>
 
 </LinearLayout>

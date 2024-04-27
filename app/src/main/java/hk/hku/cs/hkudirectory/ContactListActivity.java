@@ -62,17 +62,7 @@ public class ContactListActivity extends AppCompatActivity implements AdapterVie
         list_c.addHeaderView(headView);
 
 
-//        mData = new LinkedList<Contact>();
-//        mData.add(new Contact("name", "1"));
-//        mData.add(new Contact("name", "2"));
-//        mData.add(new Contact("Jay Chou", "3"));
-//        mData.add(new Contact("Hins Cheung", "4"));
-//        mData.add(new Contact("You", "5"));
-//        mAdapter = new ContactAdapter((LinkedList<Contact>) mData, mContext);
-//
-//
-//        list_c.setAdapter(mAdapter);
-//        list_c.setOnItemClickListener(this);
+
     }
 
     public class connectSQL extends AsyncTask<String, Void, List<Map<String, String>>> {
@@ -139,6 +129,7 @@ public class ContactListActivity extends AppCompatActivity implements AdapterVie
             String clickedName = mData.get(clickedPosition).getcName();
             Toast.makeText(mContext, "Clicked name: " + clickedName, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
+        intent.putExtra("name", clickedName);
         startActivity(intent);
     }
 }
