@@ -61,7 +61,8 @@
         <!-- </activity> -->
         <activity
             android:name=".HomePageActivity"
-            android:exported="false">
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".MainActivity"
@@ -71,6 +72,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".ProfileActivity"
