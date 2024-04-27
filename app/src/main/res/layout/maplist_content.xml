@@ -1,61 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        app:srcCompat="@drawable/baseline_account_box_24"
-        android:id="@+id/contact" />
-
-    <TextView
-        android:text="Testname"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mapName"
-        android:textSize="14sp"
-        android:maxLength="30"
-        android:textColor="@color/black"
-        android:layout_alignBottom="@+id/contact"
-        android:layout_toRightOf="@+id/contact"
-        android:layout_toEndOf="@+id/contact"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginBottom="17dp" />
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
-    <TextView
-        android:id="@+id/mapType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/contact"
-        android:layout_marginStart="157dp"
-        android:layout_marginLeft="157dp"
-        android:layout_marginBottom="17dp"
-        android:layout_toEndOf="@+id/contact"
-        android:layout_toRightOf="@+id/contact"
-        android:maxLength="30"
-        android:text="Type"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/maplocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/contact"
-        android:layout_marginStart="273dp"
-        android:layout_marginLeft="273dp"
-        android:layout_marginBottom="17dp"
-        android:layout_toEndOf="@+id/contact"
-        android:layout_toRightOf="@+id/contact"
-        android:maxLength="30"
-        android:text="Location"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_class"
+            android:textSize="30sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/primaryColor"/>
 
 
-</RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

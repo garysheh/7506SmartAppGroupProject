@@ -2,15 +2,18 @@ package hk.hku.cs.hkudirectory;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,68 +21,39 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class MaplistActivity extends AppCompatActivity {
-    TextView  tType, tName, tLocation;
-    TextView  tType2, tName2, tLocation2;
+public class MaplistActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    private List<Maplist> mapData = null;
+    private Context mapContext;
+    private mapListAdapter mapAdapter = null;
+    private ListView list_map;
 
-    TextView  tType3, tName3, tLocation3;
+    List<Map<String, String>> queryName = new ArrayList<Map<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button testMapRedirect = null;
-        Button testMapRedirect2 = null;
-        Button testMapRedirect3 = null;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maplist);
-        tType = findViewById(R.id.type1);
-        tName = findViewById(R.id.name1);
-        tLocation = findViewById(R.id.location1);
-
-        tType2 = findViewById(R.id.type2);
-        tName2 = findViewById(R.id.name2);
-        tLocation2 = findViewById(R.id.location2);
-
-        tType3 = findViewById(R.id.type3);
-        tName3 = findViewById(R.id.name3);
-        tLocation3 = findViewById(R.id.location3);
-
-        connectSQL sql = new connectSQL();
+        mapContext = MaplistActivity.this;
+        final LayoutInflater inflater = LayoutInflater.from(this);
+        MaplistActivity.connectSQL sql = new MaplistActivity.connectSQL();
         sql.execute("SELECT * FROM class");
+        list_map = (ListView) findViewById(R.id.map_list_item);
 
-        testMapRedirect = (Button) findViewById(R.id.location1);
-        testMapRedirect2 = (Button) findViewById(R.id.location2);
-        testMapRedirect3 = (Button) findViewById(R.id.location3);
-        LatLng coordinates;
-        testMapRedirect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MaplistActivity.this, MapActivity.class);
-                startActivity(intent);
-            }
-        });
+    }
 
-        testMapRedirect2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MaplistActivity.this, MapActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        testMapRedirect3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MaplistActivity.this, MapActivity.class);
-                startActivity(intent);
-            }
-        });
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        int clickedPosition = position - 1;
+        if (clickedPosition >= 0 && clickedPosition < mapData.size()) {
+            String clickedRoom = mapData.get(clickedPosition).getMclass();
+            Toast.makeText(mapContext, "Clicked class: " + clickedRoom, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getBaseContext(), MapActivity.class);
+            startActivity(intent);
+        }
     }
 
 
@@ -111,7 +85,6 @@ public class MaplistActivity extends AppCompatActivity {
                     queryResult.add(new HashMap<String, String>());
                     queryResult.get(i).put("id", rs.getString(1));
                     queryResult.get(i).put("Room", rs.getString(3));
-                    queryResult.get(i).put("Instructor", rs.getString(2));
                     i++;
                 }
             } catch (Exception e) {
@@ -122,26 +95,17 @@ public class MaplistActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Map<String, String>> result) {
-            try {
-                for (int i = 0; i < result.size(); i++) {
-                    String type = result.get(i).get("id");
-                    String name = result.get(i).get("Room");
-                    String location = result.get(i).get("Instructor");
+            mapData = new LinkedList<Maplist>();
 
-                    if (i == 0) {
-                        tType.setText(type);
-                        tName.setText(name);
-                        tLocation.setText(location);
-                    } else if (i == 1) {
-                        tType2.setText(type);
-                        tName2.setText(name);
-                        tLocation2.setText(location);
-                    } else if (i == 2) {
-                        tType3.setText(type);
-                        tName3.setText(name);
-                        tLocation3.setText(location);
-                    }
+            try {
+                for (Map<String, String> map : result) {
+                    String id = map.get("id");
+                    mapData.add(new Maplist(id, ""));
+
                 }
+                mapAdapter = new mapListAdapter((LinkedList<Maplist>) mapData, mapContext);
+                list_map.setAdapter(mapAdapter);
+                list_map.setOnItemClickListener(MaplistActivity.this);
             } catch (Exception e) {
                 e.printStackTrace();
             }
