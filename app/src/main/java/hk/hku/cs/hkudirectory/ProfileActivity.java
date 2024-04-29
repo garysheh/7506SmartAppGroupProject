@@ -69,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(ProfileActivity.this, clickedName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ProfileActivity.this, clickedName, Toast.LENGTH_SHORT).show();
         }
 
         @Override

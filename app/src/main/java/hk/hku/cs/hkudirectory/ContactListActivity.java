@@ -127,7 +127,7 @@ public class ContactListActivity extends AppCompatActivity implements AdapterVie
         int clickedPosition = position - 1;
         if (clickedPosition >= 0 && clickedPosition < mData.size()) {
             String clickedName = mData.get(clickedPosition).getcName();
-            Toast.makeText(mContext, "Clicked name: " + clickedName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, "Clicked name: " + clickedName, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
         intent.putExtra("name", clickedName);
         startActivity(intent);
